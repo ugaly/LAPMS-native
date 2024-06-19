@@ -20,6 +20,7 @@ import { sortAppointmentsByDateAndTime } from "../utils/CalendarUtils";
 import categories from "../utils/Categories";
 import { CardCarousel } from "../components/CardCarousel";
 import Category from "../components/Category";
+import menu from "../utils/menu";
 
 const userInfo = {
     id: 0,
@@ -124,7 +125,21 @@ export default function HomeScreen({ navigation }) {
 
     const handleCategorySelect = (selectedCategory) => {
         // navigation.navigate("SearchScreen", { category: selectedCategory });
-         ToastAndroid.show(`Umeclick ${selectedCategory.name}`, ToastAndroid.SHORT)
+         //ToastAndroid.show(`Umeclick ${selectedCategory.name}`, ToastAndroid.SHORT)
+         if(selectedCategory.name === "View Planning"){
+            navigation.navigate("Harita");
+         }else if(selectedCategory.name === "Ask Question"){
+            navigation.navigate("Question");
+         } else if(selectedCategory.name === "Add Complaint"){
+            navigation.navigate("Complaint");
+         }
+         else if(selectedCategory.name === "Chats"){
+            navigation.navigate("GroupScreen");
+         }
+         else{
+           
+            // navigation.navigate("SearchScreen", { category: selectedCategory });
+         }
     };
 
     return (
@@ -166,13 +181,13 @@ export default function HomeScreen({ navigation }) {
                         </ImageBackground>
                     </View>
                     <View style={styles.app_container}>
-                        <Text style={styles.text}>Top News</Text>
+                        {/* <Text style={styles.text}>Top News</Text>
                         <View>
                             <CardCarousel
                                 list={categories}
                                 onSelectCategory={handleCategorySelect}
                             />
-                        </View>
+                        </View> */}
 
                         {appointmentList.length === 0 ? (
                             ""
@@ -198,8 +213,9 @@ export default function HomeScreen({ navigation }) {
                             </View>
                         )}
                         <Text style={styles.text}>Management</Text>
-                        <View style={styles.category_container}>
-                            {categories.map((category) => (
+                        <View style={styles.customersCard}>
+                        <View style={styles.customersContent}>
+                            {menu.map((category) => (
                                 <Category
                                     category={category}
                                     key={category.name}
@@ -208,6 +224,7 @@ export default function HomeScreen({ navigation }) {
                                     }
                                 />
                             ))}
+                        </View>
                         </View>
                     </View>
                 </View>
@@ -254,7 +271,7 @@ const styles = StyleSheet.create({
     },
     app_container: {
         flex: 1,
-        paddingHorizontal: 24,
+        paddingHorizontal: 16,
     },
     list_container: {
         flex: 1,
@@ -303,4 +320,228 @@ const styles = StyleSheet.create({
         alignContent: "center",
         justifyContent: "center",
     },
+    announcementCard: {
+        backgroundColor: '#fff',
+        borderRadius: 12,
+        padding: 16,
+        marginRight: 16,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        //elevation: 5,
+        width: 200,
+      },
+      announcementImage: {
+        width: '100%',
+        height: 120,
+        borderRadius: 8,
+        marginBottom: 8,
+      },
+      announcementText: {
+        fontSize: 16,
+        color: '#333',
+        marginBottom: 8,
+      },
+      readMoreButton: {
+        backgroundColor: '#4a148c',
+        padding: 10,
+        borderRadius: 8,
+        alignItems: 'center',
+      },
+      readMoreButtonText: {
+        color: '#fff',
+        fontSize: 14,
+      },
+      customersContent: {
+        marginTop: 16,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+      },
+      // customersItem: {
+      //   width: '48%',
+      //   alignItems: 'center',
+      //   backgroundColor: '#fff',
+      //   padding: 16,
+      //   borderRadius: 8,
+      //   marginBottom: 16,
+      //   shadowColor: '#000',
+      //   ...SHADOW,
+      //   shadowOffset: {
+      //     width: 0,
+      //     height: 2,
+      //   },
+      //   shadowOpacity: 0.25,
+      //   shadowRadius: 3.84,
+      //   //elevation: 5,
+      // },
+      customersText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        marginTop: 4,
+      },
+      customersLabel: {
+        fontSize: 14,
+        color: '#666',
+        marginTop: 4,
+      },
+      modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      },
+      modalContent: {
+        width: '80%',
+        backgroundColor: '#fff',
+        borderRadius: 12,
+        padding: 16,
+        alignItems: 'center',
+      },
+      modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 16,
+      },
+      modalImage: {
+        width: '100%',
+        height: 200,
+        borderRadius: 8,
+        marginBottom: 16,
+      },
+      modalTextContainer: {
+        maxHeight: 200,
+      },
+      modalText: {
+        fontSize: 16,
+        color: '#333',
+      },
+      modalButton: {
+        backgroundColor: '#4a148c',
+        padding: 10,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 16,
+      },
+      modalButtonText: {
+        color: '#fff',
+        fontSize: 14,
+      },
+      closeButton: {
+        padding: 10,
+        marginTop: 16,
+      },
+      closeButtonText: {
+        fontSize: 16,
+        color: '#4a148c',
+      },
+      zoneCard: {
+        backgroundColor: '#fff',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 24,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        // elevation: 5,
+      },
+      zoneHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 16,
+      },
+      zoneTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+      },
+      zoneContent: {
+        flexDirection: 'row',
+        alignItems: 'center',
+      },
+      zoneImage: {
+        width: 120,
+        height: 120,
+        borderRadius: 8,
+        marginRight: 16,
+      },
+      zoneInfo: {
+        flex: 1,
+      },
+      zoneText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#333',
+      },
+      zoneSubtext: {
+        fontSize: 14,
+        color: '#666',
+        marginTop: 4,
+      },
+    
+    
+    
+      customersCard: {
+        marginTop: 16,
+        backgroundColor: '#fff',
+        borderRadius: 12,
+        padding: 8,
+        marginBottom: 24,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+      },
+      customersHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 16,
+      },
+      customersTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+      },
+     
+      customersItem: {
+        width: '48%',
+        alignItems: 'center',
+        backgroundColor: '#f9f9f9',
+        padding: 16,
+        borderRadius: 8,
+        marginBottom: 16,
+        shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 6,
+  },
+  shadowOpacity: 0.37,
+  shadowRadius: 7.49,
+  elevation: 12,
+      },
+      customersText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        marginTop: 4,
+      },
+      customersLabel: {
+        fontSize: 14,
+        color: '#666',
+        marginTop: 4,
+      },
 });

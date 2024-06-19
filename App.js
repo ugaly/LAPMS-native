@@ -1,19 +1,24 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { useFonts } from "expo-font";
 import FlashMessage from "react-native-flash-message";
-import Fonts from "./src/styles/Fonts";
 import Navigation from "./src/components/Navigation";
 import { MenuProvider } from "react-native-popup-menu";
 
 export default function App() {
 
-    //font
-    const [fontsLoaded] = useFonts(Fonts);
 
-    if (!fontsLoaded) {
-        return null;
-    }
+
+
+
+    const overrideConsoleError = () => {
+        const originalError = console.error; // Store reference to the original console.error function
+        console.error = () => {}; // Override console.error with an empty function
+        console.error.original = originalError; // Store reference to the original console.error function
+      };
+      
+      // Call the function to override console.error
+      overrideConsoleError();
+      
     return (
         <MenuProvider>
             <NavigationContainer>

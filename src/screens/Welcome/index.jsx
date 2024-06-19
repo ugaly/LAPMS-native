@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { StatusBar, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {
   Svg, Defs, RadialGradient, Stop, Ellipse,
 } from 'react-native-svg';
@@ -26,7 +27,7 @@ import ModalSignIn from '../SignIn';
 
 export default function Login() {
   const { state, dispatch } = useContext(modalContext);
-
+  const navigation = useNavigation();
   return (
     <>
       {/* <StatusBar
@@ -63,15 +64,15 @@ export default function Login() {
             </LoginFacebookText>
           </ButtonContent>
         </TouchableOpacity>
-        <LoginEmailButton>
+        <LoginEmailButton onPress={() => navigation.navigate('Signup')}>
           <LoginEmailText>
           Sign Up 
           </LoginEmailText>
         </LoginEmailButton>
         <SignUpContainer >
           <SignUpText>
-            Forget Password?
-            <SignUpTextSpan> Send</SignUpTextSpan>
+              Welcome to 
+            <SignUpTextSpan> LAMPs</SignUpTextSpan>
           </SignUpText>
         </SignUpContainer>
         <LogoContainer>

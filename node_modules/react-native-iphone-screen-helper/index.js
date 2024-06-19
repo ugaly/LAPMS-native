@@ -1,102 +1,86 @@
-/** @format */
-
 import { Dimensions, Platform, StatusBar } from "react-native"
 
-export function isIphoneX() {
-    return (
-        Platform.OS === "ios" &&
-        !Platform.isPad &&
-        !Platform.isTV &&
-        (checkDimension(780) ||
-            checkDimension(812) ||
-            checkDimension(844) ||
-            checkDimension(896) ||
-            checkDimension(926) ||
-            checkDimension(852) ||
-            checkDimension(932))
-    )
-}
-
-export function isDynamicIsland() {
-    return Platform.OS === "ios" && !Platform.isPad && !Platform.isTV && _isStatusBarHeight59()
-}
-
-const checkDimension = (size) => {
-    // window is not correct sometimes when screen is correct
+const checkDimensions = (dimensions) => {
     const window = Dimensions.get("window")
-    const windowRes = window.width == size || window.height == size
     const screen = Dimensions.get("screen")
-    const screenRes = screen.width == size || screen.height == size
-    return windowRes || screenRes
+
+    return dimensions.some(([width, height]) => {
+        return (window.height === height && window.width === width) ||
+            (window.width === height && window.height === width) ||
+            (screen.height === height && screen.width === width) ||
+            (screen.width === height && screen.height === width)
+    })
+}
+const checkStatusBarHeight = (height) => {
+    const resolutions = {
+        44: [
+            [375, 812],
+            [414, 896]
+        ],
+        47: [
+            [390, 844],
+            [428, 926]
+        ],
+        48: [
+            [414, 896]
+        ],
+        50: [
+            [360, 780],
+            [375, 812]
+        ],
+        59: [
+            [393, 852],
+            [430, 932]
+        ]
+    }
+
+    return Object.keys(resolutions).some(key => {
+        return parseInt(key) === height && checkDimensions(resolutions[key])
+    })
 }
 
-const checkDimensions = (portraitWidth, portraitHeight) => {
-    const window = Dimensions.get("window")
-    const windowRes =
-        (window.height === portraitHeight && window.width === portraitWidth) ||
-        (window.width === portraitHeight && window.height === portraitWidth)
-
-    const screen = Dimensions.get("screen")
-    const screenRes =
-        (screen.height === portraitHeight && screen.width === portraitWidth) ||
-        (screen.width === portraitHeight && screen.height === portraitWidth)
-
-    return windowRes || screenRes
-}
-
-// 12, 12 Pro, 13, 13 Pro and 12 Pro Max, 13 Pro Max
-const _isStatusBarHeight47 = () => {
-    return checkDimensions(390, 844) || checkDimensions(428, 926)
-}
-
-// 11, xr
-const _isStatusBarHeight48 = () => {
-    // FIXME: cannot distinguish 11/xr between 11/11 pro max by their resolution
-    // if (!checkDimensions(414, 896)) {
-    //     return false
-    // }
-    return false
-}
-
-// 12 Mini, 13 Mini
-const _isStatusBarHeight50 = () => {
-    return checkDimensions(375, 812)
-}
-// 14 Pro, 14 Pro Max
-const _isStatusBarHeight59 = () => {
-    return checkDimensions(393, 852) || checkDimensions(430, 932)
-}
-
-const _getIphoneStatusBarHeight = () => {
+const getIphoneStatusBarHeight = () => {
     if (isIphoneX()) {
-        if (_isStatusBarHeight47()) {
+        if (checkStatusBarHeight(47)) {
             return 47
         }
-        if (_isStatusBarHeight48()) {
+        if (checkStatusBarHeight(48)) {
             return 48
         }
-        if (_isStatusBarHeight50()) {
+        if (checkStatusBarHeight(50)) {
             return 50
         }
-        if (_isStatusBarHeight59()) {
+        if (checkStatusBarHeight(59)) {
             return 59
         }
         return 44
     }
-
     return 20
 }
 
+export function isIphoneX() {
+    return Platform.OS === "ios" && !Platform.isPad && !Platform.isTV && checkDimensions([
+        [780, 360],
+        [812, 375],
+        [844, 390],
+        [896, 414],
+        [926, 428],
+        [852, 393],
+        [932, 430]
+    ])
+}
+
+export function isDynamicIsland() {
+    return Platform.OS === "ios" && !Platform.isPad && !Platform.isTV && checkStatusBarHeight(59)
+}
+
 export function ifIphoneX(iphoneXStyle, regularStyle) {
-    if (isIphoneX()) {
-        return iphoneXStyle
-    }
-    return regularStyle
+    return isIphoneX() ? iphoneXStyle : regularStyle
 }
 
 export function getStatusBarHeight() {
     return Platform.select({
-        ios: _getIphoneStatusBarHeight(),
+        ios: getIphoneStatusBarHeight(),
         android: StatusBar.currentHeight,
         default: 0,
     })

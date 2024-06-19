@@ -47,7 +47,6 @@ export const ButtonContent = styled.View`
 export const LoginFacebookText = styled.Text`
   font-size: ${Hp(14)}px;
   color: white;
-  font-family: Roboto_500Medium;
   line-height: ${Hp(16)}px;
   padding-left: ${Wp(10)}px;
 `;
@@ -65,7 +64,6 @@ export const LoginEmailButton = styled.TouchableOpacity`
 export const LoginEmailText = styled.Text`
   font-size: ${Hp(14)}px;
   color: white;
-  font-family: Roboto_500Medium;
   line-height: ${Hp(16)}px;
 `;
 
@@ -76,7 +74,6 @@ export const SignUpContainer = styled.TouchableOpacity`
 export const SignUpText = styled.Text`
   font-size: ${Hp(14)}px;
   color: black;
-  font-family: Roboto_500Medium;
   line-height: ${Hp(16)}px;
 `;
 

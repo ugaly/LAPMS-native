@@ -52,7 +52,7 @@ const LoginScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ScrollView style={{paddingBottom: 40}}>
-            <Text style={styles.text}> Pitieni hii hizi ni sample feature atakazoona citizens hiyo nimedisign mimi so pitieni kulingana na reqirements zenu mniambie sehemu za kurekebisha, its just UI sijaanza kuintergrate na modals, then fanyeni haraka data za mpango mji ni shapefiles mnatakiwa mkaombe ardhi ile tuziweke kwenye Map, and I will charge you on this project ina scope kubwa you will tell me how much will you pay me feel free and mnatakiwa kupay innitial ammount atleast niresolve issue ya bando natumia bando kubwa kwenye nodemudules</Text>
+            <Text style={styles.text}></Text>
             
             </ScrollView>
             {/* <Formik

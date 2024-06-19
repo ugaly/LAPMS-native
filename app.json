@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "AppointmentAppProject",
+    "name": "LAPMs",
     "slug": "AppointmentAppProject",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,24 +11,37 @@
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["assets/fonts/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "splash": {
         "image": "./assets/splash.png",
         "resizeMode": "cover",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "bundleIdentifier": "com.ugaly.fpy1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-        "permissions": ["CAMERA","READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "com.ugaly.fpy1"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "072c9785-3908-494d-8b3e-4f8e1ecb6d24"
+      }
     }
   }
 }

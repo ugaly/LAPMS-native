@@ -17,7 +17,6 @@ export const Header = styled.View`
 `;
 
 export const InstagramText = styled.Text`
-  font-family: Roboto_500Medium;
   font-size: ${Hp(18)}px;
   line-height: ${Hp(21)}px;
   margin-left: ${Wp(8)}px;

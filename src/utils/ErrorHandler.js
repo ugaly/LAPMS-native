@@ -31,7 +31,10 @@ export default function (errorCode) {
 
 export function showTopMessage(messageText, messageType) {
     showMessage({
-        message: messageText,
+        message: 'Message',
         type: messageType,
+        description: messageText,
+        duration: 7000,
+        style: { paddingTop: 30 }
     });
 }

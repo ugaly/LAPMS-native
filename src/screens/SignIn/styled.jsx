@@ -41,7 +41,7 @@ export const BackButton = styled.TouchableOpacity`
 `;
 
 export const SignInTextInstagram = styled.Text`
-  font-family: Roboto_900Black;
+  
   font-weight: 900;
   font-size: ${Hp(36)}px;
   line-height: ${Hp(42)}px;
@@ -53,7 +53,6 @@ export const SignInTextInstagram = styled.Text`
 `;
 
 export const EnterYourDetailsText = styled.Text`
-  font-family: Roboto_500Medium;
   font-weight: 500;
   font-size: ${Hp(16)}px;
   line-height: 19px;
@@ -75,7 +74,6 @@ export const ContainerPassword = styled.View`
 `;
 
 export const UsernameOrEmailText = styled.Text`
-  font-family: Roboto_500Medium;
   font-weight: 500;
   font-size: ${Hp(13)}px;
   line-height: ${Hp(15)}px;
@@ -96,7 +94,7 @@ export const ContainerInput = styled.View`
 export const TextInputEmail = styled.TextInput`
   padding-left: ${Wp(10)}px;
   width: 80%;
-  font-family: Roboto_400Regular;
+ 
   color: #262628;
   font-size: ${Hp(14)}px;
   line-height: ${Hp(16)}px;
@@ -108,7 +106,6 @@ export const ContainerForgot = styled.TouchableOpacity`
 `;
 
 export const ForgotPasswordText = styled.Text`
-  font-family: Roboto_500Medium;
   font-weight: 500;
   font-size: ${Hp(14)}px;
   line-height: ${Hp(15)}px;
@@ -130,7 +127,6 @@ export const LoginButton = styled.TouchableOpacity`
 export const LoginEmailText = styled.Text`
   font-size: ${Hp(14)}px;
   color: white;
-  font-family: Roboto_500Medium;
   line-height: ${Hp(16)}px;
 `;
 

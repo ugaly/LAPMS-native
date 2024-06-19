@@ -16,6 +16,8 @@ const iconPref = ({ route }) => {
                 iconName = "calendar";
             } else if (route.name === "Ara") {
                 iconName = "search";
+            } else if (route.name === "GroupScreen") {
+                iconName = "grid";
             }
             //returns in each icon
             return <Feather name={iconName} size={30} color={color} />;
